@@ -1,0 +1,37 @@
+.star-container {
+	width: 100%;
+	unicode-bidi: bidi-override;
+	direction: rtl;
+}
+
+.divStar {
+	width: 20%;
+	padding-bottom: 20%;
+	height: 0;
+	float: left;
+	position: relative;
+}
+
+.divStar img, .divPreciseStar img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	max-width: 98%;
+}
+
+.divPreciseStar {
+	width: 20%;
+	padding-bottom: 20%;
+	height: 0;
+	float: left;
+	position: relative;
+}
+
+.fillSquare {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 98%;
+	height: 98%;
+	background: pink;
+}

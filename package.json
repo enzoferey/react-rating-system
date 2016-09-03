@@ -1,0 +1,23 @@
+{
+  "name": "react-rating-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "start http://192.168.1.105:8000/ & webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enzoferey/react-rating-system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enzoferey/react-rating-system/issues"
+  },
+  "homepage": "https://github.com/enzoferey/react-rating-system#readme",
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  }
+}
