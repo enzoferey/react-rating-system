@@ -3,7 +3,14 @@ import React, { Component, PropTypes } from 'react';
 class Rating extends Component {
     constructor(props) { 
         super(props);
-        this.state = { currentHover: -1, rating: 0, preciseValue: this.props.initialValue, backupValue: 0, editable: this.props.editable };
+        this.state = { 
+            currentHover: -1, 
+            rating: 0, 
+            preciseValue: (this.props.initialValue > this.props.numberStars)? this.props.initialValue % this.props.numberStars : this.props.initialValue, 
+            backupValue: 0, 
+            editable: this.props.editable 
+        };
+        this.width = (100 / this.props.numberStars) + '%';
     }
     handleOver(index) {
         this.setState({ currentHover: index });
@@ -21,14 +28,17 @@ class Rating extends Component {
         else
             this.setState({ rating: index+1 });
     }
-    handleNumber(e) {
-        this.setState({ preciseValue: e.target.value});
-    }
     render(){
-        let stars = new Array(5);
+        const divStyle = {
+            width: this.width,
+            paddingBottom: this.width
+        }
+        
+        const numberStars = this.props.numberStars;
+        let stars = new Array(numberStars);
         
         if(this.state.editable) {
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < numberStars; i++) {
                 // Calculate width of the filling based on the value given
                 const style = {
                     width: ((i + 1) <= this.state.preciseValue || (i - 1) < this.state.currentHover)? 98 + '%' : 
@@ -45,11 +55,12 @@ class Rating extends Component {
                         handleOver={this.handleOver.bind(this, i)} 
                         callback={this.props.callback.bind(this, i)} 
                         style={style}
+                        divStyle={divStyle}
                     />
                 );
             }
         } else {
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < numberStars; i++) {
                 // Calculate width of the filling based on the value given
                 const style = {
                     width: ((i + 1) <= this.state.preciseValue || (i - 1) < this.state.currentHover)? 98 + '%' : 
@@ -60,7 +71,7 @@ class Rating extends Component {
                 }
 
                 stars[i] = (
-                    <NonEditableStars key={i} image={this.props.image} style={style} />
+                    <NonEditableStars key={i} image={this.props.image} style={style} divStyle={divStyle} />
                 );
             }
         }
@@ -77,8 +88,6 @@ class Rating extends Component {
                             return`You rated the product with ${this.state.rating} star/s`;
                     })()}
                 </p>
-
-                <input type="number" onChange={this.handleNumber.bind(this)} />
             </div>
         );
     }
@@ -86,7 +95,7 @@ class Rating extends Component {
 
 const EditableStars = (props) => {
     return (
-        <div className="divStar">
+        <div className="divStar" style={props.divStyle}>
             <div className="fillSquare" style={props.style}></div>
             <img 
                 src={props.image} alt="Rating Icon"
@@ -99,7 +108,7 @@ const EditableStars = (props) => {
 
 const NonEditableStars = (props) => {
     return (
-        <div className="divStar">
+        <div className="divStar" style={props.divStyle}>
             <div className="fillSquare" style={props.style}></div>
             <img 
                 src={props.image} alt="Rating Icon"
@@ -116,7 +125,8 @@ Rating.propTypes = {
     initialValue: PropTypes.number,
     editable: PropTypes.bool,
     callback: PropTypes.func,
-    lockRating: PropTypes.bool
+    lockRating: PropTypes.bool,
+    numberStars: PropTypes.number
 }
 
 Rating.defaultProps = {
@@ -125,7 +135,8 @@ Rating.defaultProps = {
     initialValue: 0,
     editable: true,
     callback: Rating.prototype.handleClick,
-    lockRating: true
+    lockRating: true,
+    numberStars: 20
 }
 
 export default Rating;

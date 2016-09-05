@@ -1,7 +1,5 @@
 .star-container {
 	width: 100%;
-	unicode-bidi: bidi-override;
-	direction: rtl;
 }
 
 .divStar {
