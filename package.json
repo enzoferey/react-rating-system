@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "start http://192.168.1.116:8000/ & webpack-dev-server"
+    "start": "start http://192.168.1.120:8000/ & webpack-dev-server"
   },
   "repository": {
     "type": "git",

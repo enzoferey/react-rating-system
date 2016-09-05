@@ -12,19 +12,11 @@
 	position: relative;
 }
 
-.divStar img, .divPreciseStar img {
+.divStar img {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 98%;
-}
-
-.divPreciseStar {
-	width: 20%;
-	padding-bottom: 20%;
-	height: 0;
-	float: left;
-	position: relative;
 }
 
 .fillSquare {
@@ -33,5 +25,4 @@
 	left: 0;
 	width: 98%;
 	height: 98%;
-	background: pink;
 }
