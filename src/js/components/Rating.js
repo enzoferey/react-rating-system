@@ -31,7 +31,7 @@ class Rating extends Component {
     render(){
         const divStyle = {
             width: this.width,
-            paddingBottom: this.width
+            paddingBottom: this.width,
         }
         
         const numberStars = this.props.numberStars;
@@ -45,7 +45,7 @@ class Rating extends Component {
                         (i < this.state.preciseValue)?
                             (((this.state.preciseValue) % 1) * 100 - 2) + '%' : 0,
 
-                    background: this.props.bg
+                    background: this.props.fillBG
                 }
 
                 stars[i] = (
@@ -56,6 +56,7 @@ class Rating extends Component {
                         callback={this.props.callback.bind(this, i)} 
                         style={style}
                         divStyle={divStyle}
+                        initialBG={this.props.initialBG}
                     />
                 );
             }
@@ -67,18 +68,18 @@ class Rating extends Component {
                         (i < this.state.preciseValue)?
                             (((this.state.preciseValue) % 1) * 100 - 2) + '%' : 0,
 
-                    background: this.props.bg
+                    background: this.props.fillBG
                 }
 
                 stars[i] = (
-                    <NonEditableStars key={i} image={this.props.image} style={style} divStyle={divStyle} />
+                    <NonEditableStars key={i} image={this.props.image} style={style} divStyle={divStyle} initialBG={this.props.initialBG} />
                 );
             }
         }
         
         return(
             <div>
-                <div className="stars-container" onMouseEnter={this.handleEnter.bind(this)} onMouseLeave={this.handleLeave.bind(this)}>
+                <div className="stars-container" style={this.props.containerStyle} onMouseEnter={this.handleEnter.bind(this)} onMouseLeave={this.handleLeave.bind(this)}>
                     {stars}
                 </div>
 
@@ -97,6 +98,7 @@ const EditableStars = (props) => {
     return (
         <div className="divStar" style={props.divStyle}>
             <div className="fillSquare" style={props.style}></div>
+            <div className="fillInitialBG" style={{ background: props.initialBG }}></div>
             <img 
                 src={props.image} alt="Rating Icon"
                 onMouseEnter={props.handleOver}
@@ -110,6 +112,7 @@ const NonEditableStars = (props) => {
     return (
         <div className="divStar" style={props.divStyle}>
             <div className="fillSquare" style={props.style}></div>
+            <div className="fillInitialBG" style={{ background: props.initialBG }}></div>
             <img 
                 src={props.image} alt="Rating Icon"
             />
@@ -121,22 +124,26 @@ const NonEditableStars = (props) => {
 
 Rating.propTypes = {
     image: PropTypes.string.isRequired,
-    bg: PropTypes.string.isRequired,
+    fillBG: PropTypes.string.isRequired,
     initialValue: PropTypes.number,
+    initialBG: PropTypes.string,
     editable: PropTypes.bool,
     callback: PropTypes.func,
     lockRating: PropTypes.bool,
-    numberStars: PropTypes.number
+    numberStars: PropTypes.number,
+    containerStyle: PropTypes.object
 }
 
 Rating.defaultProps = {
-    image: '../../circle.png',
-    bg: 'pink',
+    image: '../../star2.png',
+    fillBG: '#f1c40f',
     initialValue: 0,
+    initialBG: '',
     editable: true,
     callback: Rating.prototype.handleClick,
-    lockRating: true,
-    numberStars: 20
+    lockRating: false,
+    numberStars: 5,
+    containerStyle: { maxWidth: '100px' }
 }
 
 export default Rating;

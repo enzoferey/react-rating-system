@@ -1,4 +1,4 @@
-.star-container {
+.stars-container {
 	width: 100%;
 }
 
@@ -15,12 +15,17 @@
 	top: 0;
 	left: 0;
 	width: 98%;
+	z-index: 3;
 }
 
-.fillSquare {
+.fillSquare, .fillInitialBG {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 98%;
 	height: 98%;
+}
+
+.fillSquare {
+	z-index: 2;
 }
