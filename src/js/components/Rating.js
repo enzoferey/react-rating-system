@@ -14,20 +14,30 @@ class Rating extends Component {
     handleOver(index) {
         this.setState({ currentHover: index });
     }
-    handleEnter() {
-        if (this.state.editable)
-            this.setState({ preciseValue: 0 });
+    handleContainerEnter() {
+        this.setState({ preciseValue: 0 });
     }
-    handleLeave() {
-        this.setState({ currentHover: -1, preciseValue: (this.state.editable)? this.props.initialValue : (this.state.rating > 0)? this.state.rating: this.props.initialValue });
+    handleContainerLeave() {
+        this.setState({ currentHover: -1, preciseValue: this.props.initialValue });
     }
     handleClick(index) {
         if (this.props.lockRating)
-            this.setState({ rating: index+1, editable: false });
+            this.setState({ rating: index + 1, editable: false });
         else
-            this.setState({ rating: index+1 });
+            this.setState({ rating: index + 1 });
 
-        //this.props.callback(index);
+        this.props.callback(index + 1);
+    }
+    calculateWidth(i) {
+        // Calculate width of the filling based on the value given
+        const value = this.state.preciseValue;
+
+        if((i + 1) <= value || (i - 1) < this.state.currentHover) 
+            return 100 + '%'; // Full star
+        else if(i < value) 
+            return (value % 1 * 100) + '%'; // Portion star
+
+        return 0; // Empty
     }
     render(){
         const divStyle = {
@@ -40,12 +50,8 @@ class Rating extends Component {
         
         if(this.state.editable) {
             for (let i = 0; i < numberStars; i++) {
-                // Calculate width of the filling based on the value given
                 const style = {
-                    width: ((i + 1) <= this.state.preciseValue || (i - 1) < this.state.currentHover)? 98 + '%' : 
-                        (i < this.state.preciseValue)?
-                            (((this.state.preciseValue) % 1) * 100 - 2) + '%' : 0,
-
+                    width: this.calculateWidth(i),
                     background: this.props.fillBG
                 }
 
@@ -54,21 +60,23 @@ class Rating extends Component {
                         key={i} 
                         image={this.props.image} 
                         handleOver={this.handleOver.bind(this, i)} 
-                        callback={this.props.callback.bind(this, i)} 
+                        callback={this.handleClick.bind(this, i)} 
                         style={style}
                         divStyle={divStyle}
                         initialBG={this.props.initialBG}
                     />
                 );
             }
+
+            return(
+                <div className="stars-container" style={this.props.containerStyle} onMouseEnter={this.handleContainerEnter.bind(this)} onMouseLeave={this.handleContainerLeave.bind(this)}>
+                    {stars}
+                </div>
+            );
         } else {
             for (let i = 0; i < numberStars; i++) {
-                // Calculate width of the filling based on the value given
                 const style = {
-                    width: ((i + 1) <= this.state.preciseValue || (i - 1) < this.state.currentHover)? 98 + '%' : 
-                        (i < this.state.preciseValue)?
-                            (((this.state.preciseValue) % 1) * 100 - 2) + '%' : 0,
-
+                    width: this.calculateWidth(i),
                     background: this.props.fillBG
                 }
 
@@ -76,22 +84,13 @@ class Rating extends Component {
                     <NonEditableStars key={i} image={this.props.image} style={style} divStyle={divStyle} initialBG={this.props.initialBG} />
                 );
             }
-        }
-        
-        return(
-            <div>
-                <div className="stars-container" style={this.props.containerStyle} onMouseEnter={this.handleEnter.bind(this)} onMouseLeave={this.handleLeave.bind(this)}>
+
+            return(
+                <div className="stars-container" style={this.props.containerStyle}>
                     {stars}
                 </div>
-
-                <p>
-                    {(() => {
-                        if(this.state.rating > 0) 
-                            return`You rated the product with ${this.state.rating} star/s`;
-                    })()}
-                </p>
-            </div>
-        );
+            );
+        }
     }
 }
 
@@ -144,7 +143,7 @@ Rating.defaultProps = {
     callback: Rating.prototype.handleClick,
     lockRating: false,
     numberStars: 5,
-    containerStyle: { maxWidth: '100px' }
+    containerStyle: { maxWidth: '200px' }
 }
 
 export default Rating;
