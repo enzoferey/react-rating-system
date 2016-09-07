@@ -7,7 +7,6 @@ class Rating extends Component {
             currentHover: -1, 
             rating: 0, 
             preciseValue: (this.props.initialValue > this.props.numberStars)? this.props.initialValue % this.props.numberStars : this.props.initialValue, 
-            backupValue: 0, 
             editable: this.props.editable 
         };
         this.width = (100 / this.props.numberStars) + '%';
@@ -17,16 +16,18 @@ class Rating extends Component {
     }
     handleEnter() {
         if (this.state.editable)
-            this.setState({ backupValue: this.state.preciseValue, preciseValue: 0 });
+            this.setState({ preciseValue: 0 });
     }
     handleLeave() {
-        this.setState({ currentHover: -1, preciseValue: (this.state.editable)? this.state.backupValue : this.state.rating, backupValue: 0 });
+        this.setState({ currentHover: -1, preciseValue: (this.state.editable)? this.props.initialValue : (this.state.rating > 0)? this.state.rating: this.props.initialValue });
     }
     handleClick(index) {
         if (this.props.lockRating)
             this.setState({ rating: index+1, editable: false });
         else
             this.setState({ rating: index+1 });
+
+        //this.props.callback(index);
     }
     render(){
         const divStyle = {
