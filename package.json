@@ -1,8 +1,8 @@
 {
   "name": "react-rating-system",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.5",
+  "description": "A star rating component fully customizable made with React !",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "start http://192.168.77.1:8000/ & webpack-dev-server"
   },
@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/enzoferey/react-rating-system.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Enzo Ferey",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/enzoferey/react-rating-system/issues"
   },
@@ -19,5 +19,15 @@
   "dependencies": {
     "react": "^15.3.1",
     "react-dom": "^15.3.1"
-  }
+  },
+  "keywords": [
+    "react",
+    "stars",
+    "rating",
+    "component",
+    "customizable",
+    "jsx",
+    "image",
+    "hearth"
+  ]
 }

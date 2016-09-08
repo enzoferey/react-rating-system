@@ -1,6 +1,8 @@
 module.exports = {
   entry: './src/js/main.js',
   output: {
+    library: 'Rating',
+    libraryTarget: 'umd',
     path: './src',
     filename: 'app.bundle.js'
   },
