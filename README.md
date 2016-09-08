@@ -5,10 +5,13 @@ A star rating component fully customizable made with React !
 
 **[Check out the demo]** 
 
-![gif](https://enzoferey.github.io/react-rating-system/gif1.gif)
-![gif](https://enzoferey.github.io/react-rating-system/gif2.gif)
-![gif](https://enzoferey.github.io/react-rating-system/gif3.gif)
-![gif](https://enzoferey.github.io/react-rating-system/gif4.gif)
+![gif](./dist/gif1.gif)
+
+![gif](./dist/gif2.gif)
+
+![gif](./dist/gif3.gif)
+
+![gif](./dist/gif4.gif)
 
 #Install
 
