@@ -1,13 +1,14 @@
 # react-rating-system
 A star rating component fully customizable made with React !
 
-[STILL FINISHING TO SETUP NPM AND REPO, DONT EXPECT IT TO WORK YET]
-
 #Demo
 
 **[Check out the demo]** 
 
-![gif](https://enzoferey.github.io/react-rating-system/demo-gif.gif)
+![gif](https://enzoferey.github.io/react-rating-system/gif1.gif)
+![gif](https://enzoferey.github.io/react-rating-system/gif2.gif)
+![gif](https://enzoferey.github.io/react-rating-system/gif3.gif)
+![gif](https://enzoferey.github.io/react-rating-system/gif4.gif)
 
 #Install
 
@@ -40,6 +41,11 @@ ReactDOM.render(
 ```
 
 [Check out more examples in the source code of the demo above]
+
+###Important
+
+You will need to use an image with a solid background except for the zone you want to be "filled".
+Take a look at the images in `/dist` directory for a clearer understanding.
 
 ###Props
   - `image: String` - (REQUIRED) path to the icon image
