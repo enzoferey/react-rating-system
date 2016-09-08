@@ -39,18 +39,23 @@ ReactDOM.render(
 
 ```
 
+[Check out more examples in the source code of the demo above]
+
 ###Props
   - `image: String` - (REQUIRED) path to the icon image
-  - `bg: String` - (REQUIRED) filling color in css format (name, hex or rgb)
+  - `fillBG: String` - (REQUIRED) filling color in css format (name, hex or rgb)
+  - `initialBG: String` - initial background color in css format (name, hex or rgb)
   - `initialValue: Number` - initial value of rating (i.e. AJAX received)
   - `editable: Bool` - whether users can vote or not
-  - `callback: Function` - callback function when a "star" is clicked, it will receive value as arg
+  - `callback: Function` - callback function when a "star" is clicked, it will receive index (1 based) as arg
   - `lockRating: Bool` - whether the user rating stay displayed or not after voting
   - `numberStars: Number` - the number of "stars"
+  - `containerStyle: Object` - style of the rating component container
 
 ([See defaults])
 
 **MIT Licensed**
 
-[Check out the demo]: <https://enzoferey.github.io/react-rating-system/demo>
-[See defaults]: <https://github.com/enzoferey/react-swipe-navigation/blob/master/js/ReactSwipeNavigate.js#L153>
+[Check out the demo]: <https://enzoferey.github.io/react-rating-system/>
+[Check out more examples in the source code of the demo above]: <https://github.com/enzoferey/react-rating-system/blob/master/src/js/main.js>
+[See defaults]: <https://github.com/enzoferey/react-rating-system/blob/master/src/js/components/Rating.js#L138>
