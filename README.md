@@ -24,12 +24,12 @@ npm install react-rating-system
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom';
-import ReactRatingSystem from 'react-rating-system';
+import Rating from 'react-rating-system';
 
 class YourClass extends React.Component {
     render() {
         return (
-            <ReactRatingSystem 
+            <Rating 
                 image="../YOURPATH/imageName.png" bg="#333333" [...args]
             />
         );
