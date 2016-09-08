@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 class Rating extends Component {
-    constructor(props) { 
+    constructor(props) {
         super(props);
         this.state = { 
             currentHover: -1, 
@@ -25,8 +25,9 @@ class Rating extends Component {
             this.setState({ rating: index + 1, editable: false });
         else
             this.setState({ rating: index + 1 });
-
-        this.props.callback(index + 1);
+        
+        if(this.props.callback)
+            this.props.callback(index + 1);
     }
     calculateWidth(i) {
         // Calculate width of the filling based on the value given
@@ -135,15 +136,12 @@ Rating.propTypes = {
 }
 
 Rating.defaultProps = {
-    image: '../../star2.png',
-    fillBG: '#f1c40f',
+    fillBG: 'pink',
     initialValue: 0,
-    initialBG: '',
+    initialBG: 'white',
     editable: true,
-    callback: Rating.prototype.handleClick,
     lockRating: false,
-    numberStars: 5,
-    containerStyle: { maxWidth: '200px' }
+    numberStars: 5
 }
 
 export default Rating;
