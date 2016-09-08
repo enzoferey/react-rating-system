@@ -1,0 +1,8 @@
+#Ignore everything
+*
+
+#Except
+!dist/index.js
+!dist/star.png
+!dist/star2.png
+!dist/heart.png
