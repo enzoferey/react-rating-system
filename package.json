@@ -1,6 +1,6 @@
 {
   "name": "react-rating-system",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A star rating component fully customizable made with React !",
   "main": "./dist/index.js",
   "scripts": {
