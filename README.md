@@ -1,7 +1,7 @@
 # react-rating-system
 A star rating component fully customizable made with React !
 
-#Demo
+## Demo
 
 **[Check out the demo]** 
 
@@ -13,31 +13,27 @@ A star rating component fully customizable made with React !
 
 ![gif](./dist/gif4.gif)
 
-#Install
+## Install
 
 ```
 npm install react-rating-system
 ```
 
-#Usage
-###Example
-```js
+## Usage
+
+```jsx
 import React from 'react'
 import ReactDOM from 'react-dom';
 import Rating from 'react-rating-system';
 
-class YourClass extends React.Component {
-    render() {
-        return (
-            <Rating 
-                image="../YOURPATH/imageName.png" bg="#333333" [...args]
-            />
-        );
-    }
-}
+const MyRating = () => (
+    <Rating 
+        image="../YOURPATH/imageName.png" bg="#333333" {...args}
+    />
+);
 
 ReactDOM.render(
-    <YourClass />, 
+    <MyRating />, 
     document.getElementById('app')
 );
 
@@ -45,12 +41,12 @@ ReactDOM.render(
 
 [Check out more examples in the source code of the demo above]
 
-###Important
+### Important
 
 You will need to use an image with a solid background except for the zone you want to be "filled".
 Take a look at the images in `/dist` directory for a clearer understanding.
 
-###Props
+## Props
   - `image: String` - (REQUIRED) path to the icon image
   - `fillBG: String` - (REQUIRED) filling color in css format (name, hex or rgb)
   - `initialBG: String` - initial background color in css format (name, hex or rgb)
